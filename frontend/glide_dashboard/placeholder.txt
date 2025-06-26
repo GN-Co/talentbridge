@@ -1,0 +1,1 @@
+This folder will store configuration files or JSON exports if the no-code dashboard supports export/import.
