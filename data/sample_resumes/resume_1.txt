@@ -1,0 +1,21 @@
+John Doe
+123 Main St, New York, NY 10001
+Email: johndoe@example.com
+
+EDUCATION
+Master of Science in Computer Science
+XYZ University, 2024
+
+SKILLS
+Python, SQL, Machine Learning, Data Analysis, Git, Tableau
+
+EXPERIENCE
+Data Analyst Intern
+Green Future Nonprofit | Jun 2023 – Dec 2023
+- Built dashboards to visualize donor engagement
+- Automated monthly reports using Python scripts
+- Analyzed survey data to improve volunteer retention
+
+PROJECTS
+Job Board Aggregator – Built a web scraper that pulls job listings from nonprofit portals
+Resume Parser – Created a Streamlit app that summarizes and scores resumes
