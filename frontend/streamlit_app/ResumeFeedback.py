@@ -1,21 +1,22 @@
 import streamlit as st
-import openai
 import os
 
-st.title("📝 Resume Feedback")
+# Import the modular function from backend
+from backend.openai_api.resume_feedback import generate_resume_feedback
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+st.set_page_config(page_title="Resume Feedback | TalentBridge", layout="centered")
+st.title("📝 Resume Feedback (AI-powered)")
 
-uploaded_file = st.file_uploader("Upload your resume (PDF or TXT)", type=["pdf", "txt"])
+uploaded_file = st.file_uploader("Upload your resume (PDF or TXT)", type=["txt", "pdf"])
+
 if uploaded_file:
-    resume_text = uploaded_file.read().decode("utf-8", errors="ignore")
-    with st.spinner("Analyzing your resume with GPT..."):
-        response = openai.ChatCompletion.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "You're a career advisor helping students improve their resumes."},
-                {"role": "user", "content": f"Please review this resume and give suggestions:\n\n{resume_text}"}
-            ]
-        )
-        st.success("Feedback generated below:")
-        st.write(response['choices'][0]['message']['content'])
+    file_text = uploaded_file.read().decode("utf-8", errors="ignore")
+
+    st.subheader("Resume Preview:")
+    st.code(file_text[:1000])  # show first 1000 characters
+
+    if st.button("Get AI Feedback"):
+        with st.spinner("Analyzing your resume with GPT..."):
+            feedback = generate_resume_feedback(file_text)
+            st.success("✅ Here's your personalized feedback:")
+            st.write(feedback)
