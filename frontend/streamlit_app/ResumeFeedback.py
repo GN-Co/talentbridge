@@ -1,5 +1,7 @@
 import streamlit as st
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
 # Import the modular function from backend
 from backend.openai_api.resume_feedback import generate_resume_feedback
